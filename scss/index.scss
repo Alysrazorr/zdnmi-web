@@ -1,0 +1,14 @@
+header.top-header {
+  height: 80px;
+}
+nav.top-nav {
+  background-color: #333333;
+  height: 50px;
+
+  &>div.top-nav__menus {
+    width: 1280px;
+    margin: 0 auto;
+    height: 100%;
+    line-height: 100%;
+  }
+}
