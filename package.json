@@ -1,0 +1,19 @@
+{
+  "name": "zdnmi-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alysrazorr/zdnmi-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alysrazorr/zdnmi-web/issues"
+  },
+  "homepage": "https://github.com/alysrazorr/zdnmi-web#readme"
+}
