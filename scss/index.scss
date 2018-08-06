@@ -12,3 +12,12 @@ nav.top-nav {
     line-height: 100%;
   }
 }
+footer.bottom-copyright {
+  display: flex;
+  background-color: #333333;
+  color: #0fd;
+  justify-content: center;
+  height: 60px;
+  line-height: 60px;
+  font-size: 12px;
+}

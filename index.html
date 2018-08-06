@@ -18,6 +18,20 @@
 
     </div>
   </nav>
+  <footer class="bottom-map">
+    <img src="image/qrcode-index.png"/>
+  </footer>
+  <footer class="bottom-copyright">
+    <span>Copyright&nbsp;2018 - <span id="thisYear"></span>&nbsp;Zdnmi. All Rights Reserved.</span>&nbsp;<span>粤ICP备18095652号</span>
+  </footer>
 </body>
+<script type="text/javascript">
+  function thisYear() {
+    let date = new Date()
+    return date.getFullYear()
+  }
+
+  document.getElementById('thisYear').innerHTML = thisYear()
+</script>
 
 </html>
