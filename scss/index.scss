@@ -11,8 +11,8 @@ nav.top-nav {
 }
 footer {
   &.footer {
-    background-color: rgb(59,62,67);
-    color: rgb(136,143,143);
+    background-color: #eee;
+    color: #222;
     display: flex;
     justify-content: center;
 
@@ -20,14 +20,41 @@ footer {
       width: 70%;
 
       &>div {
-
         &.quick-starts {
+          padding: 50px 0;
+          height: 400px;
+
           &>div.content {
-            display: inline-block;
+            float: left;
             width: 25%;
-            height: 400px;
+
+            &>div.content-header {
+              font-size: 30px;
+              font-weight: 400;
+              height: 80px;
+              line-height: 80px;
+              border-bottom: solid .5px rgb(69,72,77);
+            }
+
+            &>ul.content-list {
+              margin: 20px 0 0 0;
+              padding: 0 0 0 10px;
+              list-style-type: none;
+
+              &>li {
+                font-size: 14px;
+                height: 30px;
+                line-height: 30px;
+                transition: color 200ms;
+
+                &:hover {
+                  color: rgb(236,143,143);
+                }
+              }
+            }
           }
         }
+
         &.sitemap {
           position: relative;
           height: 100px;
@@ -36,6 +63,7 @@ footer {
   
           &>div.contact {
             font-size: 14px;
+
             &>a {
               color: rgb(136,143,143);
               &:hover {
@@ -43,38 +71,8 @@ footer {
               }
             }
           }
-          &>div.social-media {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            &>i {
-              display: inline-block;
-              width: 60px;
-              height: 60px;
-              line-height: 60px;
-              font-size: 30px;
-              text-align: center;
-              // border-radius: 10px 50px 50px 15px;
-              // transform: rotate(-45deg);
-              color: rgb(59,62,67);
-              background-color: rgb(106,113,113);
-  
-              &.fa-weixin:hover {
-                color: #0d0;
-              }
-              &.fa-weibo:hover {
-                color: #d00;
-              }
-              &.fa-qq:hover {
-                color: #fff;
-              }
-            }
-          }
         }
+        
         &.copyright {
           height: 80px;
           line-height: 80px;
