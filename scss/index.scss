@@ -1,23 +1,136 @@
-nav.top-nav {
-  background-color: rgb(32,41,51);
-  height: 80px;
+@charset "utf-8";
+@import '_global';
 
-  &>div.top-nav__menus {
-    width: 1280px;
-    margin: 0 auto;
-    height: 100%;
-    line-height: 100%;
-  }
-}
-footer {
-  &.footer {
-    background-color: #eee;
-    color: #222;
+$header-size: 30px;
+$brand-size: 90px;
+$container-size: 60%;
+
+header {
+  &.top-header {
+    height: $header-size;
+    line-height: $header-size;
+    background-color: #222;
+    color: #fff;
     display: flex;
     justify-content: center;
 
     &>div.container {
-      width: 70%;
+      width: $container-size;
+      height: 100%;
+      font-size: 14px;
+
+      &>a {
+        color: #fff;
+
+        &:hover {
+          color: $color-hover;
+        }
+      }
+    }
+  }
+  &.top-brand {
+    height: $brand-size;
+    line-height: $brand-size;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px 1px rgba(55,55,55, .1);
+    display: flex;
+    justify-content: center;
+
+    &>div.container {
+      width: $container-size;
+      height: 100%;
+
+      &>a.brand {
+        background-image: url('../image/logo+brand_red.png');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-position-y: 18%;
+        display: block;
+        float: left;
+        width: 400px;
+        height: $brand-size;
+        line-height: $brand-size;
+      }
+
+      &>ul.nav-menu {
+        display: block;
+        float: right;
+        font-size: 20px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        &>li {
+          float: left;
+
+          &>a {
+            display: block;
+            padding: 0 $brand-size / 3;
+            height: $brand-size;
+            line-height: $brand-size;
+          }
+
+          &>div.menu {
+            transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+            top: $header-size + $brand-size - 20px;
+            left: 0;
+            right: 0;
+            height: 300px;
+            background-color: rgba(255,255,255,.9);
+            box-shadow: 0px 2px 5px 1px rgba(55,55,55,.1);
+              
+            &>div.tab-headers {
+              height: 50px;
+              line-height: 50px;
+              border-top: solid 1px #eee;
+              border-bottom: solid 1px #eee;
+              display: flex;
+              justify-content: center;
+
+              &>a {
+                font-size: 16px;
+                display: block;
+                height: 40px;
+                line-height: 40px;
+                border-top: solid 5px transparent;
+                border-bottom: solid 5px transparent;
+                margin: 0 10px;
+
+                &:hover, &.active {
+                  border-bottom-color: $color-hover;
+                }
+              }
+            }
+          }
+
+          &[data-has-menu="true"]:hover {
+            &>a {
+              color: $color-hover;
+            }
+            &>div.menu {
+              visibility: visible;
+              opacity: 1;
+              top: $header-size + $brand-size;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  &.footer {
+    background-color: #eee;
+    color: $color-font;
+    display: flex;
+    justify-content: center;
+
+    &>div.container {
+      width: $container-size;
 
       &>div {
         &.quick-starts {
@@ -33,12 +146,18 @@ footer {
               font-weight: 400;
               height: 80px;
               line-height: 80px;
-              border-bottom: solid .5px rgb(69,72,77);
+
+              &:hover {
+                &::after {
+                  content: '->';
+                  font-family: 'Consolas';
+                }
+              }
             }
 
             &>ul.content-list {
-              margin: 20px 0 0 0;
-              padding: 0 0 0 10px;
+              margin: 0;
+              padding: 0;
               list-style-type: none;
 
               &>li {
@@ -48,7 +167,7 @@ footer {
                 transition: color 200ms;
 
                 &:hover {
-                  color: rgb(236,143,143);
+                  color: $color-hover;
                 }
               }
             }
@@ -67,15 +186,15 @@ footer {
             &>a {
               color: rgb(136,143,143);
               &:hover {
-                color: #d00;
+                color: $color-hover;
               }
             }
           }
         }
         
         &.copyright {
-          height: 80px;
-          line-height: 80px;
+          height: 40px;
+          line-height: 40px;
           font-size: 14px;
           font-family: Arial, Helvetica, sans-serif;
         }
