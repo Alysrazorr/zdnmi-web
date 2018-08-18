@@ -41,6 +41,7 @@ header {
     z-index: 9999;
 
     &>div.container {
+      min-width: 1280px;
       width: $container-size;
       height: 100%;
 
@@ -77,12 +78,10 @@ header {
           &>div.menu {
             transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
             position: absolute;
-            visibility: hidden;
-            opacity: 0;
+            display: none;
             top: $header-size + $brand-size - 40px;
             left: 0;
             right: 0;
-            height: 300px;
             background-color: rgba(255,255,255,.9);
             box-shadow: 0px 2px 5px 1px rgba(55,55,55,.1);
             z-index: 8999;
@@ -109,6 +108,37 @@ header {
                 }
               }
             }
+            
+            &>div.tab-contents {
+              position: relative;
+              height: auto;
+
+              &>div.tab-content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                visibility: hidden;
+                opacity: 0;
+                font-size: 17px;
+
+                &>div.container {
+                  width: $container-size;
+                  margin: 0 auto;
+                }
+
+                &.active {
+                  visibility: visible;
+                  opacity: 1;
+                }
+
+                &>div>a {
+                  display: block;
+                  height: 40px;
+                  line-height: 40px;
+                }
+              }
+            }
           }
 
           &[data-has-menu="true"]:hover {
@@ -116,8 +146,7 @@ header {
               color: $color-hover;
             }
             &>div.menu {
-              visibility: visible;
-              opacity: 1;
+              display: initial;
               top: $header-size + $brand-size - 30px;
             }
           }
@@ -127,9 +156,129 @@ header {
   }
 }
 
+div.section {
+  height: 500px;
+  padding: 50px 0;
+
+  &>h1.section-header {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  &>h3.section-sub-header {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 100;
+    text-align: center;
+  }
+
+  &>div.container {
+    width: $container-size;
+    height: 420px;
+    margin: 0 auto;
+    padding: 50px 0;
+
+    &>div.section-card {
+      cursor: pointer;
+      float: left;
+      width: 20%;
+      height: 100%;
+      position: relative;
+      background-position: center;
+      transition: all .4s;
+      -webkit-filter: grayscale(30%); /* Chrome, Safari, Opera */
+      filter: grayscale(30%);
+
+      &:hover {
+        -webkit-filter: grayscale(0%); /* Chrome, Safari, Opera */
+        filter: grayscale(0%);
+      }
+
+      &>div.section-card-face {
+        font-size: 16px;
+        font-weight: 100;
+        color: #fff;
+        height: 420px;
+        transition: all .4s;
+
+        &:hover {
+          background-color: rgba(86, 135, 190, 0.8);
+
+          &>div.section-card-top {
+            height: 100px;
+          }
+
+          &>p.content {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+
+        &>div.section-card-top {
+          transition: all .4s cubic-bezier(0.3, 0.5, 0.7, 0.9);
+          height: 170px;
+        }
+
+        &>h1 {
+          font-weight: 400;
+          text-align: center;
+        }
+
+        &>p.content {
+          visibility: hidden;
+          opacity: 0;
+          width: 60%;
+          margin: 0 auto;
+          word-wrap: break-word;
+          transition: all .4s cubic-bezier(0.3, 0.5, 0.7, 0.9);
+        }
+      }
+    }
+
+    &>div.section-line-news {
+      height: 60px;
+      line-height: 30px;
+      width: 100%;
+      font-size: 16px;
+
+      &>a.news-title {
+        margin-left: 20px;
+        font-weight: 600;
+        font-size: 15px;
+        height: 30px;
+        line-height: 30px;
+      }
+
+      &>span.news-content {
+        display: block;
+        color: #555;
+        margin-left: 520px;
+        padding: 0;
+        font-size: 13px;
+        height: 30px;
+        line-height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    
+    &>img.section-news-image {
+      float: left;
+      height: 420px;
+      width: 500px;
+    }
+  }
+
+}
+
 footer {
   &.footer {
-    background-color: #eee;
+    background-color: #fff;
     color: $color-font;
     display: flex;
     justify-content: center;
@@ -139,8 +288,8 @@ footer {
 
       &>div {
         &.quick-starts {
-          padding: 50px 0;
-          height: 400px;
+          padding: 20px 0;
+          height: 300px;
 
           &>div.content {
             float: left;
@@ -178,30 +327,13 @@ footer {
             }
           }
         }
-
-        &.sitemap {
-          position: relative;
-          height: 100px;
-          line-height: 50px;
-          border-top: solid .5px rgb(69,72,77);
-  
-          &>div.contact {
-            font-size: 14px;
-
-            &>a {
-              color: rgb(136,143,143);
-              &:hover {
-                color: $color-hover;
-              }
-            }
-          }
-        }
         
         &.copyright {
           height: 40px;
           line-height: 40px;
           font-size: 14px;
           font-family: Arial, Helvetica, sans-serif;
+          text-align: center;
         }
       }
     }
@@ -233,31 +365,44 @@ div.slider {
 
     &.slider-indicators {
       position: absolute;
-      width: 140px;
-      height: 10px;
-      bottom: 50px;
-      left: calc(50% - 70px);
+      width: 300px;
+      height: 5px;
+      bottom: 30px;
+      left: calc(50% - 150px);
       z-index: 100;
 
       &>div.slider-indicator {
         float: left;
-        width: 40px;
-        height: 10px;
+        width: 60px;
+        height: 5px;
         background-color: rgba(0,0,0,.3);
-        overflow: hidden;
-        border-radius: 5px;
 
         &>div.block {
-          height: 10px;
+          height: 5px;
           width: 0;
-          background-color: rgba(255,255,255,.3);
-          transition: all 1s;
+          background-color: #fff;
 
           &.active {
-            width: 40px;
+            width: 60px;
+          }
+
+          &.animate {
+            transition: all 8s;
           }
         }
       }
     }
+  }
+}
+
+div.rolling-news {
+  border-top: solid 1px #ddd;
+  border-bottom: solid 1px #ddd;
+  background-color: #fff;
+
+  &>div.container {
+    margin: 0 auto;
+    width: $container-size;
+    height: 50px;
   }
 }

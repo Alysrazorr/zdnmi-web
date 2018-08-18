@@ -1,0 +1,28 @@
+$container-size: 60%;
+
+div.root {
+  font-size: 16px;
+  padding: 50px;
+
+  &>div.container {
+    width: $container-size;
+    margin: 0 auto;
+
+    &>div.left {
+      width: 100px;
+
+      &>a.tab-header {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+
+    &>div.right {
+      width: calc(100% - 100px);
+      height: 1000px;
+    }
+  }
+}

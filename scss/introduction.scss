@@ -1,0 +1,16 @@
+$container-size: 60%;
+
+div.root {
+  font-size: 16px;
+  padding: 50px;
+
+  &>div.container {
+    width: $container-size;
+    margin: 0 auto;
+
+    &>p {
+      text-indent: 2em;
+      line-height: 1.5em;
+    }
+  }
+}
